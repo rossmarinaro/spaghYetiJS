@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>&#127837; &#128076; Meatballin'! &#127837; &#128076;</title>
+    <title>&#127837; &#128076; spagYETIJS IDE &#127837; &#128076;</title>
     <link rel="stylesheet" type="text/css" href="style.css"/>
     <script type="text/javascript" src="https://connect.facebook.net/en_US/fbinstant.6.2.js"></script>
  
@@ -12,7 +12,13 @@
         width: 800px;
         height: 800px;
       }
-
+     /*  #game > */ canvas{
+        margin: auto; 
+        box-sizing: border-box;
+        margin-top: 40px;
+        width: 70px; 
+        /* border: 0.3em solid #ffffff; */
+      }
       #main-container{
         display: flex;
       }
@@ -31,6 +37,13 @@
         margin: auto;
         font-family: monospace;
       }
+
+
+      /* div {
+        border: 1px solid red;
+      } */
+
+
     </style>
   </head>
   <body>
@@ -46,6 +59,7 @@
                 <input id="game-width-bar" class="form-input" type="text" placeholder="width" name="username" minLength="2" maxLength="10" />
                 <input id="game-height-bar" class="form-input" type="text" placeholder="height" name="username" minLength="2" maxLength="10" />
                 <input class="form-input" id="form-submit" type="submit" value="Apply" name="submitButton"/>
+                <input class="form-input" id="reset-canvas" type="submit" value="Reset" name="resetButton"/>
             </form>
         </div>
       </div>
