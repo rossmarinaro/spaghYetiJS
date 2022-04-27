@@ -1,0 +1,43 @@
+{
+  "name": "spaghYetiJS",
+  "version": "1.0.0",
+  "main": "main.js",
+  "build": {
+    "appId": "spaghYetiJS",
+    "extends": null,
+    "win": {
+      "icon": "./public/img/logo.ico",
+      "target": "msi"
+    }
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node ./python/main.js && npm start",
+    "start": "nodemon main",
+    "buildElectron": "electron .",
+    "packageElectron": "electron-packager . --icon=\"./public/img/logo.ico\"",
+    "install": "node-gyp rebuild",
+    "deploy": "git status && git add . && git commit -am 'update' && git push heroku master && npm run deploy && heroku logs --tail"
+  },
+  "keywords": [],
+  "author": "REMAREMYINITIALS",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.2"
+  },
+  "devDependencies": {
+    "electron": "11.2.0",
+    "electron-builder": "^22.14.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rossmarinaro/spagYetiJS.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rossmarinaro/spagYetiJS/issues"
+  },
+  "homepage": "https://github.com/rossmarinaro/spagYetiJS#readme",
+  "gypfile": true,
+  "description": "game"
+}

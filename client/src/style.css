@@ -1,0 +1,109 @@
+
+
+    /*css*/
+
+  @font-face {
+      font-family: "bangers";
+      src: url("./assets/fonts/bangers-regular-webfont.woff") format("woff")
+  }
+  @font-face {
+      font-family: "digitizer";
+      src: url("./assets/fonts/digitizer.woff") format("woff");
+  }
+  html, body{
+
+    padding: 0;
+    width: 70%;
+    height: 70%;
+    background: #606060;
+    margin: 0;
+    padding: 0;
+    overscroll-behavior: none; 
+  }
+  #Leaderboard, noscript{
+    font-family: 'bangers' , 'Arial Black', sans-serif;
+    text-shadow:1px 1px 0px #3c3d3d;
+    color: #ff0000;
+    margin: auto 0;
+    text-align:center;
+    -webkit-text-stroke: 0.06rem black;
+  }
+   input[type="text"] {
+    background: linear-gradient(top, #d6d7d7, #dee0e0);
+    border: 0.3rem solid #000000;
+    border-radius: 4px;
+    box-shadow: 0 1px #fff;
+    box-sizing: border-box;
+    display: block;
+    color: #696969;
+    height: 39px;
+    margin: 50px 0 0 50px;
+    padding-left: 10px;
+    transition: box-shadow 0.3s;
+    width: 200px;
+  }
+  input[type="text"]:focus {
+    box-shadow: 0 0 4px 1px rgba(55, 166, 155, 0.3);
+    outline: 0;
+  }
+  input[type="submit"] {
+    width:240px;
+    height:35px;
+    display:block;
+    font-family:Arial, "Helvetica", sans-serif;
+    font-size:16px;
+    font-weight:bold;
+    color:#fff;
+    text-decoration:none;
+    text-transform:uppercase;
+    text-align:center;
+    text-shadow:1px 1px 0px #3c3d3d;
+    padding-top:6px;
+    margin: 20px 0 0 29px;
+    position:relative;
+    cursor:pointer;
+    border: none;  
+    background-color: #ff0000;
+    background-image: linear-gradient(top,#414600,#262900);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius:5px;
+    box-shadow: inset 0px 1px 0px #0e0e0e, 0px 5px 0px 0px #a03e06, 0px 10px 5px #999;
+  }
+  input[type="submit"]:active {
+    top:3px;
+    box-shadow: inset 0px 1px 0px #2ab7ec, 0px 2px 0px 0px #31524d, 0px 5px 3px #999;
+  }    
+
+
+
+  @media screen and (orientation: portrait)
+{
+	canvas{
+		border: none;
+	}
+	body{
+		background-image: none;
+		background-color: black;
+	}
+}
+@media screen and (orientation: landscape)
+{
+	canvas{
+		box-sizing: border-box; 
+	}
+
+
+}
+@media screen and (min-width: 1030px) /* desktop only */
+{
+	div{
+		margin-top: 40px;
+	}
+	#game > canvas{
+		background-color: #000000;
+		box-shadow: 0 0 25px #000000;
+		border: 0.5em solid #313131;
+	}
+}

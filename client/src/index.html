@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>&#127837; &#128076; Meatballin'! &#127837; &#128076;</title>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <script type="text/javascript" src="https://connect.facebook.net/en_US/fbinstant.6.2.js"></script>
+ 
+    <style>
+      #game{
+        background-color: #0022ff;
+        width: 800px;
+        height: 800px;
+      }
+
+      #main-container{
+        display: flex;
+      }
+      #workspace{
+        display: grid;
+        grid-column: 1fr 1fr;
+      }
+      
+      body {
+        background-color: #404041;
+      }
+      .container{
+        border: 0.5em solid #2b2b2b;
+      }
+      h1, p, .form-input {
+        margin: auto;
+        font-family: monospace;
+      }
+    </style>
+  </head>
+  <body>
+    
+   <div class="container" id="main-container">
+    <div class="container" id="game">
+
+    </div>
+    <div class="container" id="workspace">
+      <div>
+          <div class="container" id="inner-content">
+            <form >
+                <input id="game-width-bar" class="form-input" type="text" placeholder="width" name="username" minLength="2" maxLength="10" />
+                <input id="game-height-bar" class="form-input" type="text" placeholder="height" name="username" minLength="2" maxLength="10" />
+                <input class="form-input" id="form-submit" type="submit" value="Apply" name="submitButton"/>
+            </form>
+        </div>
+      </div>
+      <h1 id="assets">Assets</h1>
+    </div>
+   </div>
+    
+   <script>
+
+
+
+   </script>
+    
+  </body>
+</html>
