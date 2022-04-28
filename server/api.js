@@ -2,8 +2,8 @@
 
 
 const express = require('express'),
-	app = express()
-    server = require('http').Server(app), 
-    port = process.env.PORT || 9000;
+	App = express()
+    server = require('http').Server(App), 
+    port = process.env.PORT || 9090;
 
-module.exports = { express, app, server, port}
+module.exports = { express, App, server, port}

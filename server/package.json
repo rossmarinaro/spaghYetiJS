@@ -1,5 +1,5 @@
 {
-  "name": "spaghYetiJS",
+  "name": "spaghyetijs",
   "version": "1.0.0",
   "main": "main.js",
   "build": {
@@ -13,7 +13,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "node ./python/main.js && npm start",
-    "start": "nodemon main",
+    "start": "node main",
     "buildElectron": "electron .",
     "packageElectron": "electron-packager . --icon=\"./public/img/logo.ico\"",
     "buildProject": "webpack --config webpack/prod.js ",
@@ -26,17 +26,21 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.2",
-    "node-gyp": "^9.0.0"
+    "node-gyp": "^9.0.0",
+    "phaser": "^3.55.2"
   },
   "devDependencies": {
+    "@babel/core": "^7.17.9",
+    "babel-loader": "^8.2.5",
     "clean-webpack-plugin": "^4.0.0",
-    "electron": "11.2.0",
+    "electron": "^11.5.0",
     "electron-builder": "^22.14.5",
     "html-webpack-plugin": "^5.5.0",
     "terser-webpack-plugin": "^5.3.1",
     "webpack": "^5.72.0",
     "webpack-cli": "^4.9.2",
-    "webpack-merge": "^5.8.0"
+    "webpack-merge": "^5.8.0",
+    "electron-packager": "^8.1.0"
   },
   "repository": {
     "type": "git",

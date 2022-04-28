@@ -1,5 +1,5 @@
 
-				
+			import Phaser from 'phaser';
 			
 			class Boot extends Phaser.Scene {
 				constructor(){
@@ -15,7 +15,7 @@
 				}
 				create()
 				{
-					"this.add.graphics({fillStyle: {color: 0xff0000}}).fillRectShape(new Phaser.Geom.Rectangle(0, 0, 50, 50));"
+					this.add.graphics({fillStyle: {color: 0xff0000}}).fillRectShape(new Phaser.Geom.Rectangle(0, 0, 50, 50));
 				}
 			  }
 

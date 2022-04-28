@@ -21,8 +21,8 @@
 
     function runPython()
     {
-        console.log('python running')
         spawn('python', ['python/main.py']);
+        console.log('python running');
     }
 
     module.exports = { runPython }

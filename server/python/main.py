@@ -11,8 +11,9 @@ print "end"
 
 """ open browser """
 
-# webbrowser.open('http://localhost:9000')
+
+
+webbrowser.open('http://localhost:7070')
 
 
 
-   

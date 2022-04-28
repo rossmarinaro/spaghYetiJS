@@ -1,25 +1,21 @@
-/*** PASTABOSS MAIN */
 
 
+	const fs = require('fs'),											
+	{ express, App, server, port } = require('./api.js');		
+	const { runPython } = require('./python/main.js');
+	
+	
+	//App.get('/', (req, res) => res.sendFile(__dirname + '/index.html'));
+	App.use(express.json());
 
-const path = require('path'),
-	//	cors = require('cors'),										// path module
-		fs = require('fs'),											// file sys
-		{ express, app, server, port } = require('./api.js');		// http express modules
-		const { runPython } = require('./python/main.js');
-		//require('./electron.js');									// electron desktop builder
-		app.use(express.static(__dirname + '/public'));
-		app.get('/', (req, res) => res.sendFile(__dirname + '/index.html'));
-		app.use(express.json());
-		//app.use(cors());
-
+	//require('./electron.js')
 	// //node cc addon
 	// 	require('./optimization.js');
 	// //python
 	 	//require('./python/main.js');
 		
 
-//fs.open('./build.sh', err => console.log('err', err))
+	//fs.open('./build.sh', err => console.log('err', err))
 
 
 
@@ -33,11 +29,11 @@ const path = require('path'),
 			//init = contents.scene.init,
 			//preload = contents.scene.preload,
 			create = contents.scene.create;
-console.log(contents.scene.create)
+			console.log('embedding code: ', contents.scene.create)
 
 		return (
 			`
-				
+			import Phaser from 'phaser';
 			
 			class Boot extends Phaser.Scene {
 				constructor(){
@@ -88,9 +84,11 @@ console.log(contents.scene.create)
 
 
 //--------------------------------------- write project
-
-	app.post('/buildProject', (req, res) => {
-
+let bool = false
+	App.post('/buildProject', (req, res) => {
+		if (bool === true)
+		return
+		bool = true
 		//console.log('game data: ', req.body); 
 		
 		const game = {
@@ -99,17 +97,29 @@ console.log(contents.scene.create)
 		}
 
 		//appendFile
-		fs.writeFile('./project/game.js', Game(game), () => {})
+		fs.writeFile('./project/game.js', Game(game), () => {});
+		runPython()
+		//console.log(server)
 
-
-		runPython();
-
+		//server.listen(7070, ()=> console.log(`Welcome to port: 7070`)); 
+		// server.close(()=>{ 
+		// 	App.use(express.static(__dirname + '/dist'));
+		// 	server.listen(7070, ()=> console.log(`Welcome to port: 7070`)); 
+		// })
 	});
  
+	//runPython()
 
-	//---------------------------------server listen on port 
+
+
+//---------------------------------server listen on port 
 	
-	server.listen(port, ()=> console.log(`Welcome to port: ${port}`)); 
+	server.listen(port, ()=> {
+		console.log(`Welcome to port: ${port}`);
+		App.use(express.static(__dirname + '/public'));
+	}); 
+
+
 
 
 

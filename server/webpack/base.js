@@ -29,7 +29,7 @@ module.exports = {
         test: /\.(gif|png|ogg|jpe?g|svg|xml|mp3|woff)$/i, 
         use: 'file-loader' ,
         exclude: [
-          path.resolve(__dirname, '../src/assets/', '../src/')
+          path.resolve(__dirname, '../project/assets/', '../project/')
         ]
       },
       {
@@ -57,7 +57,7 @@ module.exports = {
       WEBGL_RENDERER: JSON.stringify(true)
     }),
     new HtmlWebpackPlugin({
-      template: './src/index.html'
+      template: '../server/project/index.html'
     }),
   ]
 };
