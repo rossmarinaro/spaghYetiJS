@@ -10,7 +10,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 module.exports = {
   mode: 'development',
   devtool: 'eval-source-map',
-  entry:  './public/bundle.min.js.js',
+  entry:  './public/bundle.min.js',
   module: {
    // noParse: ["ws"],
     rules: [

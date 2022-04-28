@@ -16,6 +16,7 @@
     "start": "nodemon main",
     "buildElectron": "electron .",
     "packageElectron": "electron-packager . --icon=\"./public/img/logo.ico\"",
+    "buildProject": "webpack --config webpack/prod.js ",
     "install": "node-gyp rebuild",
     "deploy": "git status && git add . && git commit -am 'update' && git push heroku master && npm run deploy && heroku logs --tail"
   },
@@ -24,11 +25,18 @@
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
-    "express": "^4.17.2"
+    "express": "^4.17.2",
+    "node-gyp": "^9.0.0"
   },
   "devDependencies": {
+    "clean-webpack-plugin": "^4.0.0",
     "electron": "11.2.0",
-    "electron-builder": "^22.14.5"
+    "electron-builder": "^22.14.5",
+    "html-webpack-plugin": "^5.5.0",
+    "terser-webpack-plugin": "^5.3.1",
+    "webpack": "^5.72.0",
+    "webpack-cli": "^4.9.2",
+    "webpack-merge": "^5.8.0"
   },
   "repository": {
     "type": "git",
