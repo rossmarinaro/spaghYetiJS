@@ -1,21 +1,30 @@
-export const ajaxHeaders = {
-    get: {
-        method: 'GET', 
-        mode: 'same-origin', // no-cors, *cors, same-origin
-        cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-        credentials: 'include',
-        headers: { 
-            'Accept': 'application/json', 
+
+export class Ajax { 
+
+    request(type, body)
+    {
+        this.headers = { 
+            'Accept': 'application/json',  //text/html
             'Content-Type': 'application/json',
+            mode:  'same-origin',
+            cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+            credentials: 'include',
+            'Access-Control-Allow-Origin': /* 'https://pastaboss-deathmatch.herokuapp.com' */ '*'
+        };
+        switch (type)
+        {
+            case 'GET': this.method = 'GET'; break;
+            case 'POST': this.method = 'POST';
+            break;
+            case 'PUT': this.method = 'PUT'; break;
         }
-    },
-    post: {
-        method: 'POST', // *GET, POST, PUT, DELETE, etc.
-        headers: {
-            'Accept': 'application/json', 
-            'Content-Type': 'application/json',
-            "Access-Control-Allow-Origin": "*",
-        },
-        body: null
-    }
-}
+        const _ = {
+            method: this.method,
+            headers: this.headers
+        }
+        type === 'POST' || type === 'PUT' ? 
+            _['body'] = body : delete _['body'];
+
+        return _;
+    }  
+} 

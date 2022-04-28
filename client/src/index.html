@@ -20,6 +20,12 @@
 
           <div class="container" >
             <form >
+              <input class="form-input" id="build-project" type="submit" value="Build" name="buildButton"/>
+              <input class="form-input" type="submit" value="Open" name="openButton"/>
+              <input class="form-input" type="submit" value="Save" name="saveButton"/>
+            </form>
+            <br>
+            <form >
                 <input id="game-width-bar" class="form-input" type="text" placeholder="width" name="username" minLength="2" maxLength="10" />
                 <input id="game-height-bar" class="form-input" type="text" placeholder="height" name="username" minLength="2" maxLength="10" />
                 <input class="form-input" id="form-submit" type="submit" value="Apply" name="submitButton"/>
@@ -28,7 +34,7 @@
           </div>
  
         <div class="container">
-          <h1 >Assets</h1>
+          <h1>Assets</h1>
           <form id="assets">
             <input id="load-asset-bar" class="form-input" type="file"  name="load-asset" /> <!-- multiple -->
            <!--  <input id="load-asset" class="form-input" type="submit" value="Load" name="assetButton"/> -->
@@ -46,6 +52,6 @@
 
    </script>
     
-  </body>
+  <script type="text/javascript" src="bundle.min.js"></script></body>
 
 </html>
