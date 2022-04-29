@@ -1,5 +1,5 @@
 
-			import Phaser from 'phaser';
+			import Phaser from './phaser.min.js';
 			
 			class Boot extends Phaser.Scene {
 				constructor(){

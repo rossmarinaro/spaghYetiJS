@@ -1,7 +1,7 @@
 {
   "name": "spaghyetijs",
   "version": "1.0.0",
-  "main": "main.js",
+  "main": "main/main.js",
   "build": {
     "appId": "spaghYetiJS",
     "extends": null,
@@ -13,7 +13,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "node ./python/main.js && npm start",
-    "start": "node main",
+    "start": "node main/main.js",
+    "python": "py python/main.py",
     "buildElectron": "electron .",
     "packageElectron": "electron-packager . --icon=\"./public/img/logo.ico\"",
     "buildProject": "webpack --config webpack/prod.js ",

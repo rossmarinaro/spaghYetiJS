@@ -1,19 +1,30 @@
-# open browser
+# start server, open browser
 
 import webbrowser
-import subprocess
+from http.server import HTTPServer, CGIHTTPRequestHandler
 
-""" run sh script """
+""" serve on port """
 
-print "start"
-subprocess.call(["sh", "./build.sh"])
-print "end"
+PORT = 7071
+
+
+server_object = HTTPServer(server_address=('', PORT), RequestHandlerClass=CGIHTTPRequestHandler)
+
+print("python serving at port", PORT)
+
 
 """ open browser """
 
+webbrowser.open("http://localhost:{}/dist".format(PORT))
 
 
-webbrowser.open('http://localhost:7070')
+server_object.serve_forever()
+
+
+
+
+
+
 
 
 
