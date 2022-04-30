@@ -24,7 +24,7 @@
 }
 
 
-div /* .container */{
+ .container{
   border: 0.5em solid #2b2b2b;
 }
 body {

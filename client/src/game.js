@@ -1,23 +1,18 @@
-import { App } from './app.js';
 
+import { App } from './app.js'
 
 
 
 class Boot extends Phaser.Scene {
   constructor(){
     super('Boot');     
-    Loader = asset => this.scene.run('Preload', asset);  
-    //App.config = this.sys;
-    //console.log(App.scene)
-  }
-  create()
-  {
-    //this.input.on('pointerdown', ()=> this.sys.game.destroy(true) )
+    // Loader = asset => this.scene.run('Preload', asset);  
+    // //App.config = this.sys;
   }
   init()
   {
-    //this.data = data;
-    this.scene.run('Preload'/* , this.data */);
+    this.data = App.scene.create;
+    this.scene.run('Preload', this.data);
     this.scene.stop('Boot');
   }
 }
@@ -28,9 +23,9 @@ class Preload extends Phaser.Scene {
   constructor(){
     super('Preload');
   }
-  init(/* data */)
+  init(data)
   {
-    //this.data = data;
+    this.data = data;
   }
   preload()
   {
@@ -38,10 +33,12 @@ class Preload extends Phaser.Scene {
   }
   create()
   {
-    this.scene.run('Main'/* , this.data */);
+    this.scene.run('Main', this.data);
     this.scene.stop('Preload');
   }
 }
+
+
 
 
 
@@ -49,25 +46,13 @@ class Main extends Phaser.Scene {
   constructor(){
     super('Main');
   }
-  create(/* data */)
+  create(data)
   {
-    //console.log('asset uri: ', data)
-    //this.input.on('pointerdown', ()=> this.sys.game.destroy(true) )
-    //this.add.image(innerWidth / 2, innerHeight / 2, 'test')
 
-    this.add.graphics({fillStyle: {color: 0xff0000}}).fillRectShape(new Phaser.Geom.Rectangle(0, 0, 50, 50));
-     App.scene.create = JSON.parse(`this.add.graphics({fillStyle: {color: 0xff0000}}).fillRectShape(new Phaser.Geom.Rectangle(0, 0, 50, 50));`)
-    //App.scene.create = (square)
-    //console.log(test)
-
-    //App.scene.create = convertGameToString(this.add.graphics({fillStyle: {color: 0xff0000}}).fillRectShape(new Phaser.Geom.Rectangle(0, 0, 50, 50)));
+    console.log('data: ', data);
+    eval(data);
+    
   }
-}
-
-function convertGameToString(contents)
-{
-  console.log(JSON.stringify(`"${contents}"`))
-  return `"${contents}"`
 }
 
 
@@ -101,4 +86,4 @@ export class Config {
 }
 
 
-export function Loader(){};
+//export function Loader(){};
