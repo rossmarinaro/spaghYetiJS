@@ -1,8 +1,6 @@
 ////////////////////////////////////////////////////// electron 
 	const path = require('path')
 
-	//require('electron-packager');
-
 	const electron = require('electron');
 	const { app, BrowserWindow } = electron; 
 
@@ -10,7 +8,7 @@
 			const win = new BrowserWindow({
 			width: 1200,
 			height: 1000,
-			//icon: __dirname + '../public/img/logo.ico',
+			icon: path.join(__dirname, '../public/img/logo.png'),
 			autoHideMenuBar: true,
 			webPreferences: {
 				nodeIntegration: true,
