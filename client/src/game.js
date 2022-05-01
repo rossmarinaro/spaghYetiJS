@@ -11,7 +11,7 @@ class Boot extends Phaser.Scene {
   }
   init()
   {
-    this.data = app.scene.create.toString();console.log(this.data)
+    this.data = app.scene.create.toString();
     this.scene.run('Preload', this.data);
     this.scene.stop('Boot');
   }
