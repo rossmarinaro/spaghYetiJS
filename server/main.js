@@ -7,6 +7,8 @@
 
 	App.use(express.static(__dirname + '/public'));
 
+	App.get('/', (req, res) => res.sendFile(__dirname + '/index.html'));
+
 	App.use(express.json());
 
 
@@ -31,7 +33,7 @@
 		}
 	
 		fs.writeFile('./project/game.js', Game(game), () => {}), // or appendFile
-		require('child_process').exec('build.sh', 
+		require('child_process').exec('buildGame.sh', 
 				err => console.log(err), 
 				bash => console.log(bash)
 			);
@@ -41,12 +43,8 @@
 	});
  
 
+	//---------- electron
 
+		require('./app/electron.js');
 
-
-
-
-
-
-
-
+	

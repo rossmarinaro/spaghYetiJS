@@ -28,7 +28,7 @@
               mode: Phaser.Scale.FIT,
               autoCenter: Phaser.Scale.CENTER_BOTH,
               width: 200,
-              height: 20
+              height: 200
             },
             parent: 'game',
             dom: {
