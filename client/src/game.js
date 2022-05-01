@@ -1,17 +1,17 @@
 
-import { App } from './app.js'
+import { app } from './index.js'
 
 
 
 class Boot extends Phaser.Scene {
+
   constructor(){
+
     super('Boot');     
-    // Loader = asset => this.scene.run('Preload', asset);  
-    // //App.config = this.sys;
   }
   init()
   {
-    this.data = App.scene.create;
+    this.data = app.scene.create.toString();console.log(this.data)
     this.scene.run('Preload', this.data);
     this.scene.stop('Boot');
   }
@@ -20,7 +20,9 @@ class Boot extends Phaser.Scene {
 
 
 class Preload extends Phaser.Scene {
+
   constructor(){
+
     super('Preload');
   }
   init(data)
@@ -43,13 +45,14 @@ class Preload extends Phaser.Scene {
 
 
 class Main extends Phaser.Scene {
+
   constructor(){
+
     super('Main');
   }
   create(data)
   {
-
-    console.log('data: ', data);
+    /* evaluate data string inputs from main application */ 
     eval(data);
     
   }
