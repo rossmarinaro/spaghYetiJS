@@ -6,7 +6,7 @@
     "appId": "spaghYetiJS",
     "extends": null,
     "win": {
-      "icon": "./public/img/logo.ico",
+      "icon": "./public/img/icon.png",
       "target": "msi"
     }
   },
@@ -15,8 +15,7 @@
     "dev": "node ./python/main.js && npm start",
     "start": "node main",
     "python": "py python/main.py",
-    "buildElectron": "electron-builder build",
-    "packageElectron": "electron-packager . --icon=\"./public/img/logo.ico\"",
+    "build": "electron-builder build",
     "buildProject": "webpack --config webpack/prod.js ",
     "install": "node-gyp rebuild",
     "deploy": "git status && git add . && git commit -am 'update' && git push heroku master && npm run deploy && heroku logs --tail"
