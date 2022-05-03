@@ -18,13 +18,15 @@
 				preload: path.join(__dirname, './preload.js')
 			}
 		});
+	//load content to window
 		win.loadFile('public/index.html');
 	//shows debugger
-		win.webContents.openDevTools(); 
+		//win.webContents.openDevTools(); 
 		
 	}
 ////log path
-	console.log('current path: ', app.getPath('exe'/* 'userData' */));
+	//console.log('current path: ', app.getPath('exe'/* 'userData' */));
+
 
 	app.whenReady().then(()=>{
 		createWindow();
@@ -45,7 +47,7 @@
 
 	ipcMain.on('buildProject', async (e, args) => {
 
-		const strpath = app.getPath('userData').toString(),
+		const strpath = app.getPath('exe').toString(),
 			  data = { path: strpath, data: args };
 
 		e.returnValue = data;

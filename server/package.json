@@ -8,13 +8,20 @@
     "win": {
       "icon": "./public/img/icon.png",
       "target": "msi"
+    },
+    "extraResources": {
+      "from": "./extern",
+      "to": "buildSys",
+      "filter": [
+        "**/*"
+      ]
     }
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "node ./python/main.js && npm start",
     "start": "node main",
-    "python": "py python/main.py",
+    "python": "py extern/main.py",
     "build": "electron-builder build",
     "buildProject": "webpack --config webpack/prod.js ",
     "install": "node-gyp rebuild",
@@ -35,7 +42,6 @@
     "clean-webpack-plugin": "^4.0.0",
     "electron": "^11.5.0",
     "electron-builder": "^22.14.5",
-    "electron-packager": "^8.7.2",
     "html-webpack-plugin": "^5.5.0",
     "terser-webpack-plugin": "^5.3.1",
     "webpack": "^5.72.0",
