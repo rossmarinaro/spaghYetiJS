@@ -4,6 +4,9 @@ const fs = require('fs');
 const path = require('path');
 const { gameScript } = require('../gameSchema/game.js');
 const { gameMarkUp } = require('../gameSchema/index.js');
+const { Webpack } = require('./webpack.js');
+
+
 
 window.addEventListener('DOMContentLoaded', ()=> {
 
@@ -26,18 +29,26 @@ window.addEventListener('DOMContentLoaded', ()=> {
       const gameData = JSON.parse(e.data),
             filepath = e.path;                      
    
-      // create project directory
+      ////create project directory
         if (!fs.existsSync(path.join(filepath, '..\\resources\\buildSys\\project')))
           fs.mkdirSync(path.join(filepath, '..\\resources\\buildSys\\project'));
 
       //write files
-        fs.writeFile(path.join(filepath, '..\\resources\\buildSys\\project\\index.html'), gameMarkUp(), (err)=> {console.log(err)});
-        fs.writeFile(path.join(filepath, '..\\resources\\buildSys\\project\\game.js'), gameScript(gameData), (err)=> {console.log(err)}); // or appendFile
+        fs.writeFile(path.join(filepath, '..\\resources\\buildSys\\project\\index.html'), gameMarkUp(), ()=> {});
+        fs.writeFile(path.join(filepath, '..\\resources\\buildSys\\project\\game.js'), gameScript(gameData), ()=> {}); // or appendFile
       
-  //run sh scripts / build app
-        
+  //run sh scripts, instantiate webpack / build app
+          
+          new Webpack(filepath);
+
           require('child_process').exec(
+
+          ////`cd extern && npm run build`, //local
+
+           ////build: 
             `cd ${path.join(filepath, '..\\resources\\buildSys\\')} && build.sh`, 
+          
+
             (err, stout, sterr) => {
               if (err)
                 console.log('exe err: ', err);
@@ -46,3 +57,4 @@ window.addEventListener('DOMContentLoaded', ()=> {
       }
 });
    
+

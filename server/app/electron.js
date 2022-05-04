@@ -57,7 +57,6 @@
 	});
 
 
-
 	// require('electron-reload')(__dirname + '/app/index.html', {
 	// electron: path.join(__dirname, 'node_modules', '.bin', 'electron')
 	// });
