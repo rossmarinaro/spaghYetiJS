@@ -2,18 +2,19 @@
   "name": "extern",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "project/game.js",
   "scripts": {
-    "test": "webpack --config webpack/prod.js && cd py main.py",
-    "python": "py main.py"
+    "build": "webpack --config webpack/prod.js",
+    "openBrowser": "py main.py"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "webpack": "^5.72.0"
-  },
+  "dependencies": {},
   "devDependencies": {
-    "webpack-cli": "^4.9.2"
+    "html-webpack-plugin": "^5.5.0",
+    "webpack": "^5.72.0",
+    "webpack-cli": "^4.9.2",
+    "webpack-merge": "^5.8.0"
   }
 }
