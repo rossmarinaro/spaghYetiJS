@@ -1,11 +1,14 @@
 # start server, open browser
 
-#import os
+import os
 import webbrowser
 from http.server import HTTPServer, CGIHTTPRequestHandler
 
+os.chdir("C:\my_cool_game")
 
-#os.chdir('C:\project data\projects\spagYeti_game_engine\server\dist')
+cwd = os.getcwd()
+
+print("Current directory: ", cwd)
 
 """ serve on port """
 
@@ -19,10 +22,20 @@ print("python serving at port", PORT)
 
 """ open browser """
 
-webbrowser.open("http://localhost:{}/my_cool_game".format(PORT))    #/dist
+webbrowser.open("http://localhost:{}".format(PORT))    #/dist etc
 
 
 server_object.serve_forever()
+
+
+
+
+
+
+
+
+
+
 
 
 
