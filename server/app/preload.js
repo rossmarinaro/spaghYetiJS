@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const { gameScript } = require('../gameSchema/game.js');
 const { gameMarkUp } = require('../gameSchema/index.js');
-const { Webpack } = require('./webpack.js');
+const { WebpackConfig } = require('./webpack.js');
 
 
 
@@ -33,19 +33,19 @@ window.addEventListener('DOMContentLoaded', ()=> {
         if (!fs.existsSync(path.join(filepath, '..\\resources\\buildSys\\project')))
           fs.mkdirSync(path.join(filepath, '..\\resources\\buildSys\\project'));
 
-      //write files
+      //write project files
         fs.writeFile(path.join(filepath, '..\\resources\\buildSys\\project\\index.html'), gameMarkUp(), ()=> {});
         fs.writeFile(path.join(filepath, '..\\resources\\buildSys\\project\\game.js'), gameScript(gameData), ()=> {}); // or appendFile
       
   //run sh scripts, instantiate webpack / build app
           
-          new Webpack(filepath);
+          new WebpackConfig(filepath);
 
           require('child_process').exec(
 
           ////`cd extern && npm run build`, //local
 
-           ////build: 
+           ////build project: 
             `cd ${path.join(filepath, '..\\resources\\buildSys\\')} && build.sh`, 
           
 
