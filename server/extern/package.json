@@ -4,13 +4,16 @@
   "description": "",
   "main": "project/game.js",
   "scripts": {
-    "build": "webpack --config webpack/prod.js",
-    "openBrowser": "py main.py"
+    "build": "webpack build --config build.js",
+    "open": "py main.py",
+    "openBrowser": "py main.py --stats verbose echo -e 'Browser open at current port' && read -rn1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {},
+  "dependencies": {
+    "phaser": "^3.55.2"
+  },
   "devDependencies": {
     "html-webpack-plugin": "^5.5.0",
     "webpack": "^5.72.0",

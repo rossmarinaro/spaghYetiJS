@@ -19,7 +19,7 @@ print("python serving at port", PORT)
 
 """ open browser """
 
-webbrowser.open("http://localhost:{}/dist".format(PORT))
+webbrowser.open("http://localhost:{}/my_cool_game".format(PORT))    #/dist
 
 
 server_object.serve_forever()
