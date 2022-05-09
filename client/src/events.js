@@ -33,7 +33,7 @@
                 
                 switch (e.srcElement.id)
                 {
-                    case 'load-asset-bar': this.loadAsset(); break;
+                    case 'load-asset-bar': this.loadAsset(e.target.files[0]); break;
                     case 'add-square': this.addSquare(); break;
                     case 'make-canvas': this.makeCanvas(); break;
                     case 'reset-canvas': this.resetCanvas(); break;
@@ -45,10 +45,10 @@
 
     //---------------------------- load asset
 
-        loadAsset()
+        loadAsset(asset)
         {
-            app.fileReader.readAsDataURL(e.target.files[0]);
-            app.preload(e.target.files[0]);
+            this.app.fileReader.readAsDataURL(asset);
+            this.app.preload.process(asset);
         }
 
     //--------------------------- add square
@@ -85,6 +85,7 @@
 
             this.app.game.destroy(true);
             this.app.game = null;
+            this.app.config = null;
             this.app.scene.create = [];
         }
 
