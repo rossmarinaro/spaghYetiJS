@@ -22,7 +22,7 @@ import Preload from './preload.js';
         this.ajax = new Ajax;
         this.events = new EventListener(this);
         this.fileReader = new FileReader();
-        this.preload = new Preload;
+        this.preload = new Preload(this);
 
       }
 

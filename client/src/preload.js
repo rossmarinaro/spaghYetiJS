@@ -2,13 +2,16 @@ import 'regenerator-runtime/runtime';
 
 export default class Preload {
     
-    process(asset)
+    constructor(app)
     {
-        //switch (file.type)
-        //{
-            //case 'image': 
+        this.app = app;
+        this.scene = app.scene;
+
+    ////process file type    
+        this.process = asset => {
+            if (file.type.startsWith('image')) 
                 return this.image(asset);
-        //}
+        }
     }
 
     async image (file) 
@@ -20,15 +23,16 @@ export default class Preload {
         }
 
         const assetKey = "mySprite",
-              assetVar = 'this.mySprite',
-              assetPath = await window.loadAsset(imgName, file);
+              assetVar = "this.mySprite",
+              assetPath = await window.loadAsset(assetKey, file); 
 
-        this.scene.preload.push(`this.load.image(${assetKey}, "${file.path.replace(/\\/g, "/")}");`);
-        this.scene.create.push(`${assetVar} = ${assetPath}`);
+        this.scene.preload.push(`this.load.image("${assetKey}", "${assetPath}");`);  //"${file.path.replace(/\\/g, "/")}"
+        this.scene.create.push(`${assetVar} = this.add.sprite(0, 0, "${assetKey}")`);
         
+    ////buffer image to asset menu
         const img = document.createElement('img');
         document.getElementById('output').appendChild(img);
-        this.fileReader.addEventListener('load', e => { 
+        this.app.fileReader.addEventListener('load', e => { 
             //alert('please create a canvas first');
             img.src = e.target.result;
         });
