@@ -21,12 +21,8 @@
 	//load content to window
 		win.loadFile('public/index.html');
 	//shows debugger
-		//win.webContents.openDevTools(); 
-		
+		win.webContents.openDevTools(); 		
 	}
-////log path
-	//console.log('current path: ', app.getPath('exe'/* 'userData' */));
-
 
 	app.whenReady().then(()=>{
 		createWindow();
@@ -45,13 +41,19 @@
 
 ////---------- IPC MAIN
 
+	const basePath = app.getPath('exe').toString();
+
+	ipcMain.on('getPath', async e =>{
+		e.returnValue = basePath;
+		e.reply('sendPath', basePath);
+	});
+
 	ipcMain.on('buildProject', async (e, args) => {
 
-		const strpath = app.getPath('exe').toString(),
-			  data = { path: strpath, data: args };
+		const data = { path: basePath, data: args };
 
 		e.returnValue = data;
-		e.reply('reply', data);
+		e.reply('triggerBuild', data);
 		console.log(args);
 		//app.exit();
 	});

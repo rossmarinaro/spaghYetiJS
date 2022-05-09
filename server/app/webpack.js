@@ -1,42 +1,71 @@
 /* WEBPACK SCHEMA */
 
-const path = require('path'), fs = require('fs');
-
-
 
 class WebpackConfig {
 
-   constructor (filepath)
+   constructor (fs, path, baseDir)
    {
-
-        this.filepath = filepath;
-
-        // if (!fs.existsSync(path.join(filepath, '..\\resources\\buildSys\\webpack')))
-        //     fs.mkdirSync(path.join(filepath, '..\\resources\\buildSys\\webpack'));
-
-        // fs.writeFile(path.join(filepath, '..\\resources\\buildSys\\webpack\\build.js'), this.build(), ()=>{});
-        
-        fs.writeFile(path.join(filepath, '..\\resources\\buildSys\\build.js'), this.build(), ()=>{});
+       this.fs = fs;
+       this.path = path;
+       this.baseDir = baseDir;
    }
 
-    build()
+//----------------------------------- build game
+
+    buildGame(e)
+    {
+        const gameData = JSON.parse(e.data),
+              filepath = e.path;
+
+    ////create project directory
+
+        if (!this.fs.existsSync(path.join(filepath, this.baseDir + 'project')))
+            this.fs.mkdirSync(path.join(filepath, this.baseDir + 'project'));
+
+    //write project files
+
+        this.fs.writeFile(path.join(filepath, this.baseDir + 'project/index.html'), gm.markup(), ()=> {});
+        this.fs.writeFile(path.join(filepath, this.baseDir + 'project/game.js'), gm.script(gameData), ()=> {}); // or appendFile
+
+    //generate build script
+
+        this.generateBuildScript(filepath);
+
+    //run sh scripts, instantiate webpack / build app
+        
+        require('child_process').exec (
+
+        `cd ${path.join(filepath, baseDir)} && build.sh`, //local: `cd extern && npm run build`
+            
+            (err, stout, sterr) => {
+                if (err)
+                    console.log('exe err: ', err);
+                console.log(stout, sterr);
+            });
+    }
+
+//----------------------------------------------
+
+    generateBuildScript(filepath)
+    {
+        console.log('building project...');
+        this.fs.writeFile(this.path.join(filepath, this.baseDir + 'build.js'), this.schema(), ()=>{});
+    }
+
+//----------------------------------------------
+
+    schema()
     {
 
-        const filepath = '/my_cool_game' //'C:/Users/Ross/AppData/Local/Programs/spaghyetijs/resources/buildSys/dist'//path.join(this.filepath, '../resources/buildSys/dist/bundle.min.js')//path.resolve(__dirname, '/dist/bundle.min.js');
-
-        // for (let char in filepath)
-        //     if (char === '/\\/')
-                //filepath.replaceAll('\\', '/');
+        const filepath = '/my_cool_game';
 
         return (
 
             `
-
                 const webpack = require('webpack'),
                 TerserPlugin = require("terser-webpack-plugin"),
                 HtmlWebpackPlugin = require('html-webpack-plugin');
 
-    
                 module.exports = {
                     entry: {
                         main: "/project/game.js",
@@ -102,51 +131,12 @@ class WebpackConfig {
             `
         );
 
-
-        // return (     WORKS
-        //     `
-        //     module.exports = {
-        //         entry: {
-        //             main: "/project/game.js",
-        //         },
-        //         output: {
-        //             path: "/dist",
-        //             filename: 'bundle.min.js'
-        //         }
-                
-        //     };
-        //     `
-        // );
-
-        // return (
-        //     `
-        //     module.exports = {
-        //         entry: {
-        //             main: "/project/game.js",
-        //         },
-        //         output: {
-        //             path: "C:/Users/Ross/AppData/Local/Programs/spaghyetijs/resources/buildSys/dist",
-        //             filename: 'bundle.min.js'
-        //         }
-                
-        //     };
-        //     `
-        // );
     }
 
 }
 
 
 module.exports = { WebpackConfig };
-
-
-
-
-
-
-
-
-
 
 
 
