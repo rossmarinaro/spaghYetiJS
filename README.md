@@ -1,6 +1,6 @@
 # spagYetiJS
 
-## tool to streamline the production of html5 games with the Phaser lib
+## IDE style tool for streamlining the production of html5 games with the Phaser lib
 
 *built with Phaser3, Webpack5, NodeJS, and Electron*
 
