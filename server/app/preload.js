@@ -20,7 +20,7 @@ window.addEventListener('DOMContentLoaded', ()=> {
 
       window.buildProject = gameData => ipcRenderer.sendSync('buildProject', gameData); 
 
-      window.loadAsset = (key, file) => gm.loadAsset(key, file);
+      window.loadAsset = async (key, file) => gm.loadAsset(key, file);
 
   //------------ generate project / build user game
   

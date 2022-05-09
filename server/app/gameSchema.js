@@ -33,7 +33,7 @@ class GameManager {
     if (!fs.existsSync(path.join(appPath, this.baseDir + 'assets')))
      fs.mkdirSync(path.join(appPath, this.baseDir + 'assets'));
     
-    let newPath = `${path.join(appPath, this.baseDir + 'assets/' + key + '.png')}`.replace(/\\/g, "/"),
+    let newPath = `${/* this.baseDir +  */'assets/' + key + '.png'}`.replace(/\\/g, "/"),
         jsonProp = JSON.stringify({[key]: newPath});
 
     console.log('new path: ', newPath)
@@ -48,9 +48,10 @@ class GameManager {
         err => {
           if (err) throw err;
           console.log('asset saved', data, '\nassets:', this.assets);
-            return newPath;
         });
     }); 
+
+    return newPath;
   }
 
   //---------------------------------- index html

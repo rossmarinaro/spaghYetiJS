@@ -57,6 +57,7 @@ class WebpackConfig {
             `
                 const webpack = require('webpack'),
                 TerserPlugin = require("terser-webpack-plugin"),
+                CopyPlugin = require('copy-webpack-plugin'),
                 HtmlWebpackPlugin = require('html-webpack-plugin');
 
                 module.exports = {
@@ -118,6 +119,13 @@ class WebpackConfig {
                         new HtmlWebpackPlugin({
                             template: "./project/index.html"
                         }),
+                        new CopyPlugin({
+                            patterns: [
+                                { from: '/assets', to: 'assets' }
+                                //, { from: 'pwa', to: '' },
+                                // { from: 'src/img/logo.ico', to: '' }
+                            ]
+                        })
                     ]
                 };
 
