@@ -4,6 +4,10 @@
 
 *built with webpack, node, and electron*
 
+
+![image info](./server/public/img/icon.png)
+
+
 ###client gets bundled and placed in public folder located in the server directory
 
 ** How to run for development **
