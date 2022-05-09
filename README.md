@@ -1,8 +1,8 @@
 # spagYetiJS
 
-## tool to streamline the production of html5 games
+## tool to streamline the production of html5 games with the Phaser lib
 
-*built with webpack, node, and electron*
+*built with Phaser3, Webpack5, NodeJS, and Electron*
 
 
 ![image info](./server/public/img/icon.png)
@@ -12,7 +12,9 @@
 
 ** How to run for development **
 
-1. `cd server/app`. uncomment the window console debugger in the electron.js file.
+1. client: `cd client && npm start`.
+   server: `cd server/app`. uncomment the window console debugger in the electron.js file.  
+   
 2. change the baseDir filepath in preload.js to avoid directory not found errors.
 3. `electron .`
 
