@@ -12,17 +12,19 @@
 
 ** How to run for development **
 
-1. client: `cd client && npm start`.
-   server: `cd server/app`. uncomment the window console debugger in the electron.js file.  
-   
-2. change the baseDir filepath in preload.js to avoid directory not found errors.
-3. `electron .`
+   client: `cd client && npm start`
+   server: 
+   1. `cd server/app`. uncomment the window console debugger in the electron.js file.  
+   2. change the baseDir filepath in preload.js to avoid directory not found errors.
+   3. `electron .`
 
 
 ** How to build **
 
-1. `cd server && npm run build`
-2. navigate to "dist" folder in server
-3. click on the installer to init install process.
+   1. `cd server && npm run build`
+   2. navigate to "dist" folder in server
+   3. click on the installer to init install process.
+
+
 
 
