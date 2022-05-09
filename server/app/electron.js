@@ -1,8 +1,9 @@
 //------------------------------- electron 
 
-	const path = require('path');
-	const electron = require('electron');
-	const { app, BrowserWindow, ipcMain } = electron; 
+	const
+		path = require('path'),
+		electron = require('electron'),
+		{ app, BrowserWindow, ipcMain } = electron;
 
 //-------- create window
 
@@ -21,7 +22,7 @@
 	//load content to window
 		win.loadFile('public/index.html');
 	//shows debugger
-		win.webContents.openDevTools(); 		
+		//win.webContents.openDevTools(); 		
 	}
 
 	app.whenReady().then(()=>{

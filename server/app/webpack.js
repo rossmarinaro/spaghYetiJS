@@ -3,39 +3,40 @@
 
 class WebpackConfig {
 
-   constructor (fs, path, baseDir)
+   constructor (fs, path, gm)
    {
        this.fs = fs;
        this.path = path;
-       this.baseDir = baseDir;
+       this.gm = gm;
    }
 
 //----------------------------------- build game
 
-    buildGame(e)
+    buildGame(content)
     {
-        const gameData = JSON.parse(e.data),
-              filepath = e.path;
+        const gameData = JSON.parse(content.data),
+              filepath = content.path;
 
     ////create project directory
 
-        if (!this.fs.existsSync(path.join(filepath, this.baseDir + 'project')))
-            this.fs.mkdirSync(path.join(filepath, this.baseDir + 'project'));
+        if (!this.fs.existsSync(this.path.join(filepath, this.gm.baseDir + 'project')))
+            this.fs.mkdirSync(this.path.join(filepath, this.gm.baseDir + 'project'));
 
     //write project files
 
-        this.fs.writeFile(path.join(filepath, this.baseDir + 'project/index.html'), gm.markup(), ()=> {});
-        this.fs.writeFile(path.join(filepath, this.baseDir + 'project/game.js'), gm.script(gameData), ()=> {}); // or appendFile
+        this.fs.writeFile(this.path.join(filepath, this.gm.baseDir + 'project/index.html'), this.gm.markup(), ()=> {});
+        this.fs.writeFile(this.path.join(filepath, this.gm.baseDir + 'project/game.js'), this.gm.script(gameData), ()=> {}); // or appendFile
 
     //generate build script
 
-        this.generateBuildScript(filepath);
+        console.log('building project...');
+        this.fs.writeFile(this.path.join(filepath, this.gm.baseDir + 'build.js'), this.schema(), ()=>{});
 
     //run sh scripts, instantiate webpack / build app
         
         require('child_process').exec (
 
-        `cd ${path.join(filepath, baseDir)} && build.sh`, //local: `cd extern && npm run build`
+        `cd ${this.path.join(filepath, this.gm.baseDir)} && build.sh`, 
             
             (err, stout, sterr) => {
                 if (err)
@@ -46,18 +47,10 @@ class WebpackConfig {
 
 //----------------------------------------------
 
-    generateBuildScript(filepath)
-    {
-        console.log('building project...');
-        this.fs.writeFile(this.path.join(filepath, this.baseDir + 'build.js'), this.schema(), ()=>{});
-    }
-
-//----------------------------------------------
-
     schema()
     {
 
-        const filepath = '/my_cool_game';
+        const dirpath = '/my_cool_game';
 
         return (
 
@@ -71,7 +64,7 @@ class WebpackConfig {
                         main: "/project/game.js",
                     },
                     output: {
-                        path: "${filepath}",
+                        path: "${dirpath}",
                         filename: 'bundle.min.js'
                     },
                     

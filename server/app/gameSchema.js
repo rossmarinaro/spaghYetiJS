@@ -11,10 +11,13 @@ class GameManager {
   constructor (baseDir)
   {
     this.baseDir = baseDir;
-    this.bundler = new WebpackConfig(fs, path, this.baseDir);
+    this.bundler = new WebpackConfig(fs, path, this);
     this.assets = {
       image: {},
-      sprite: {}
+      sprite: {},
+      atlas: {},
+      spritesheet: {},
+      audio: {}
     }
   }
 
@@ -22,31 +25,30 @@ class GameManager {
 
   async loadAsset(key, file)
   {
+    
     const appPath = await window.getApplicationPath();
 
   ////creates asset dir if doesn't exist
 
-   // if (!fs.existsSync(path.join(appPath, this.baseDir + 'assets')))
-    //  fs.mkdirSync(path.join(appPath, this.baseDir + 'assets'));
+    if (!fs.existsSync(path.join(appPath, this.baseDir + 'assets')))
+     fs.mkdirSync(path.join(appPath, this.baseDir + 'assets'));
     
     let newPath = `${path.join(appPath, this.baseDir + 'assets/' + key + '.png')}`.replace(/\\/g, "/"),
         jsonProp = JSON.stringify({[key]: newPath});
 
-     console.log('new path: ', newPath)
+    console.log('new path: ', newPath)
 
     this.assets.image[jsonProp] = jsonProp; 
 
   ////reads filepath of selected asset and copies file to assets dir
 
     fs.readFile(file.path, (err, data) => {
-      if (err) 
-        throw err;
-        fs.writeFile(newPath, data, 'base64',    //path.join(this.baseDir + 'assets/mySprite.png'
+      if (err) throw err;
+        fs.writeFile(newPath, data, 'base64',    
         err => {
-          if (err) 
-            throw err;
+          if (err) throw err;
           console.log('asset saved', data, '\nassets:', this.assets);
-          return 
+            return newPath;
         });
     }); 
   }
@@ -122,6 +124,10 @@ class GameManager {
           create()
           {
             ${create}
+          }
+          update()
+          {
+            
           }
         }
 

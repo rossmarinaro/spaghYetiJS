@@ -10,7 +10,8 @@ window.addEventListener('DOMContentLoaded', ()=> {
     for (const dependency of ['chrome', 'node', 'electron'])
       console.log(`${dependency}-version`, process.versions[dependency]);
 
-
+  //-------- init game manager instance
+  
       const gm = new GameManager('..\\resources\\buildSys\\'.replace(/\\/g, "/"));
 
   //-------- front end function handling
