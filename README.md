@@ -1,4 +1,4 @@
-# SpagYetiJS
+# SpaghYetiJS
 
 ## IDE style tool for streamlining the production of html5 games with the Phaser lib
 
