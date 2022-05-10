@@ -18,11 +18,12 @@ window.addEventListener('DOMContentLoaded', ()=> {
 
       window.getApplicationPath = () => ipcRenderer.sendSync('getPath'); 
 
-      window.buildProject = gameData => ipcRenderer.sendSync('buildProject', gameData); 
-
       window.loadAsset = async (key, file) => gm.loadAsset(key, file);
 
   //------------ generate project / build user game
+
+  
+      window.buildProject = gameData => ipcRenderer.sendSync('buildProject', gameData); 
   
       window.buildGame = e => gm.bundler.buildGame(e);
 });

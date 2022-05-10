@@ -121,7 +121,7 @@ class WebpackConfig {
                         }),
                         new CopyPlugin({
                             patterns: [
-                                { from: '/assets', to: 'assets' }
+                                { from: './project/assets', to: "${dirpath}/assets/" }
                                 //, { from: 'pwa', to: '' },
                                 // { from: 'src/img/logo.ico', to: '' }
                             ]

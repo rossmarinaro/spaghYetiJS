@@ -30,10 +30,10 @@ class GameManager {
 
   ////creates asset dir if doesn't exist
 
-    if (!fs.existsSync(path.join(appPath, this.baseDir + 'assets')))
-     fs.mkdirSync(path.join(appPath, this.baseDir + 'assets'));
+    if (!fs.existsSync(path.join(appPath, this.baseDir, 'project/assets')))
+     fs.mkdirSync(path.join(appPath, this.baseDir, 'project/assets'));
     
-    let newPath = `${/* this.baseDir +  */'assets/' + key + '.png'}`.replace(/\\/g, "/"),
+    let newPath = `${'assets/' + key + '.png'}`.replace(/\\/g, "/"),
         jsonProp = JSON.stringify({[key]: newPath});
 
     console.log('new path: ', newPath)
@@ -44,7 +44,7 @@ class GameManager {
 
     fs.readFile(file.path, (err, data) => {
       if (err) throw err;
-        fs.writeFile(newPath, data, 'base64',    
+        fs.writeFile(path.join(appPath, this.baseDir, newPath), data, 'base64',    
         err => {
           if (err) throw err;
           console.log('asset saved', data, '\nassets:', this.assets);
@@ -157,7 +157,7 @@ class GameManager {
         };
 
         new Phaser.Game(config);
-        console.log('Phaser: ', Phaser);
+        console.log('Phaser Version: ', Phaser.VERSION);
       `
     );
   }
