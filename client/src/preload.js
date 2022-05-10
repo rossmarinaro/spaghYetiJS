@@ -8,9 +8,9 @@ export default class Preload {
         this.scene = app.scene;
 
     ////process file type    
-        this.process = asset => {
+        this.process = file => {
             if (file.type.startsWith('image')) 
-                return this.image(asset);
+                return this.image(file);
         }
     }
 
@@ -24,9 +24,9 @@ export default class Preload {
 
         const assetKey = "mySprite",
               assetVar = "this.mySprite",
-              assetPath = await window.loadAsset(assetKey, file); 
+              assetPath = await window.loadAsset(assetKey, file);  
 
-        this.scene.preload.push(`this.load.image("${assetKey}", "${assetPath}");`);  //"${file.path.replace(/\\/g, "/")}"
+        this.scene.preload.push(`this.load.image("${assetKey}", "${assetPath}");`);  
         this.scene.create.push(`${assetVar} = this.add.sprite(0, 0, "${assetKey}")`);
         
     ////buffer image to asset menu
