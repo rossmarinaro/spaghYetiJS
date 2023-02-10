@@ -1,0 +1,9 @@
+
+client/node_modules
+client/.next
+client/dist
+server/node_modules
+server/dist
+server/extern/node_modules
+tmp.txt 
+

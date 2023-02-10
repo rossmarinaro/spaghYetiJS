@@ -1,0 +1,55 @@
+
+#main-container{
+  height: 800px;
+  display: flex;
+}
+#game {
+  background-color: #375087;
+  width: 50%;
+  position: relative;
+} 
+#workspace{
+  display: grid;
+  grid-column: 1fr 1fr;
+}
+
+#assets > input{
+  /* width: 50% */
+  margin: auto;
+  padding: 5%;
+}
+
+*{
+  font-family: monospace;
+/*   border: 1px solid red; */
+}
+
+
+ .container{
+  border: 0.5em solid #2b2b2b;
+}
+body {
+  background-color: #404041;
+}
+p, .form-input {
+  margin: auto; 
+}
+h1{
+  padding-left: 40%;
+}
+canvas {
+  padding: 3% 3% 3% 3%;
+  box-sizing: border-box; 
+  
+}
+
+
+/* no file chosen tooltip */
+input[type='file'] {
+  color: transparent;
+}
+
+
+#output {
+  height: 200px;
+}

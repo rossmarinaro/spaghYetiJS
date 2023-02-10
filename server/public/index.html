@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta 
+      http-equiv="Content-Security-Policy" 
+      content="
+        default-src * 'self' 'unsafe-inline' 'unsafe-eval' file: data: blob: gap: https://ssl.gstatic.com; 
+        connect-src * 'self' file: data: blob: https:; 
+        script-src * 'self' file: data: blob: https: 'unsafe-inline' 'unsafe-eval';
+        worker-src * 'self' file: data: blob: https:; 
+        style-src 'self' 'unsafe-inline'; 
+        media-src * 'self' file: data: blob: https:; 
+        img-src * 'self' file: data: blob: http:;
+        object-src * 'self' file: data: blob: https:;
+      "
+    >
+
+
+    <title>&#127837; &#128076; spagYETIJS IDE &#127837; &#128076;</title>
+
+    <!-- <link rel="stylesheet" type="text/css" href="/style.css"/> -->
+  <!--   <script type="text/javascript" src="https://connect.facebook.net/en_US/fbinstant.6.2.js"></script> -->
+
+    </head>
+
+  <body>
+    
+    <div class="container" id="main-container">
+
+      <div class="container" id="game"></div>
+      <div class="container" id="workspace">
+
+          <div class="container" >
+            <form >
+              <input class="form-input" id="build-project" type="submit" value="Build" name="buildButton"/>
+              <input class="form-input" id="test-input" type="submit" value="Test" name="testButton"/>
+              <input class="form-input" type="submit" value="Open" name="openButton"/>
+              <input class="form-input" type="submit" value="Save" name="saveButton"/>
+            </form>
+            <br>
+            <form >
+              <input id="game-width-bar" class="form-input" type="text" placeholder="width" name="username" minLength="2" maxLength="10" />
+              <input id="game-height-bar" class="form-input" type="text" placeholder="height" name="username" minLength="2" maxLength="10" />
+              <input class="form-input" id="make-canvas" type="submit" value="Apply" name="submitButton"/>
+              <input class="form-input" id="reset-canvas" type="submit" value="Reset" name="resetButton"/>
+            </form>
+          </div>
+          <div class="container">
+            <h1>Tools</h1>
+            <form id="tools">
+              <input class="form-input" id="add-square" type="submit" value="Add Square" name="toolButton"/>
+              <input id="sq-pos-x" class="form-input" type="number" placeholder="X" name="square-pos-x" />
+              <input id="sq-pos-y" class="form-input" type="number" placeholder="Y" name="square-pos-y" />
+            </form>
+          </div>
+        <div class="container">
+          <h1>Assets</h1>
+          <form id="assets">
+            <input id="load-asset-bar" class="form-input" type="file"  name="load-asset" /> <!-- multiple -->
+           <!--  <input id="load-asset" class="form-input" type="submit" value="Load" name="assetButton"/> -->
+            <div id="output"></div>
+          </form>
+        </div>
+
+      </div>
+
+    </div>
+   
+    <script type="text/javascript" src="render.js"></script><script type="text/javascript" src="bundle.min.js"></script></body>
+</body>
+
+</html>
