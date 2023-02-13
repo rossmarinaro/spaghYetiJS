@@ -8,6 +8,14 @@ import Preload from './preload.js';
 
   export class App  {
 
+    public ajax: Ajax
+    public events: EventListener
+    public preload: Preload 
+    public fileReader: FileReader
+    public config: any
+    public game: any
+    public scene: any
+
       constructor()
       {
         this.game = null;

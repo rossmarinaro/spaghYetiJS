@@ -8,7 +8,7 @@ class Boot extends Phaser.Scene {
 
     super('Boot');     
   }
-  init()
+  private init(): void
   {
     this.data = app.scene.create.toString();
     this.scene.run('Preload', this.data);
@@ -24,15 +24,15 @@ class Preload extends Phaser.Scene {
 
     super('Preload');
   }
-  init(data)
+  private init(data: Phaser.Data.DataManager): void
   {
     this.data = data;
   }
-  preload()
+  private preload(): void
   {
    // this.load.image('test', this.data);
   }
-  create()
+  private create(): void
   {
     this.scene.run('Main', this.data);
     this.scene.stop('Preload');
@@ -41,7 +41,7 @@ class Preload extends Phaser.Scene {
 
 
 
-
+//----------- main scene
 
 class Main extends Phaser.Scene {
 
@@ -49,10 +49,10 @@ class Main extends Phaser.Scene {
 
     super('Main');
   }
-  create(data)
+  private create(dataAsstring: string): void
   {
     /* evaluate data string inputs from main application */ 
-    eval(data);
+    eval(dataAsstring);
     
   }
 }
@@ -61,7 +61,15 @@ class Main extends Phaser.Scene {
 
 export class Config {
 
-  constructor(width, height)
+  public type: any
+  public backgroundColor: string
+  public scale: any
+  public parent: string
+  public dom: any
+  public scene: any;
+  public physics: any
+
+  constructor(width: number, height: number)
   {
 
     this.type = Phaser.AUTO;
