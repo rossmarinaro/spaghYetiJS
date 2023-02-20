@@ -1,5 +1,5 @@
-import { app } from './index.js'
-
+import { App } from './app';
+import Phaser from 'phaser';
 
 
 class Boot extends Phaser.Scene {
@@ -10,7 +10,7 @@ class Boot extends Phaser.Scene {
   }
   private init(): void
   {
-    this.data = app.scene.create.toString();
+    this.data = App.scene.create.toString();
     this.scene.run('Preload', this.data);
     this.scene.stop('Boot');
   }
@@ -59,7 +59,7 @@ class Main extends Phaser.Scene {
   }
 }
 
-
+//-------------------------- base config
 
 export class Config {
 

@@ -2,13 +2,17 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from '@next/font/google'
 import styles from '@/styles/Home.module.css'
+import dynamic from 'next/dynamic'
+//import 'regenerator-runtime/runtime';
+import { App } from '../game-engine/app';
+import { useEffect } from 'react';
 
-import { EventListener } from '@/game-engine/events'
+const inter = Inter({ subsets: ['latin'] });
 
-
-const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+
+
   return (
 
 
@@ -24,7 +28,7 @@ export default function Home() {
             <input className="form-input" type="submit" value="Open" name="openButton"/>
             <input className="form-input" type="submit" value="Save" name="saveButton"/>
           </form>
-          <form >
+          <form action="" onSubmit={ App.events.processAction }>
             <input id="game-width-bar" className="form-input" type="text" placeholder="width" name="username" minLength={2} maxLength={10} />
             <input id="game-height-bar" className="form-input" type="text" placeholder="height" name="username" minLength={2} maxLength={10} />
             <input className="form-input" id="make-canvas" type="submit" value="Apply" name="submitButton"/>

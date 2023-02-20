@@ -1,83 +1,71 @@
 
-    import Phaser from 'phaser';
 
-    import { App } from './app.js';
-    import { Config } from './game.js';
+    import { App } from './app';
+    import { Config } from './game';
+
 
 
 
     export class EventListener {
 
-        private app: App
-        private canMakeCanvas: number
-
-        constructor(app: App)
-        {
-
-            this.app = app;
-            this.canMakeCanvas = 0;
+        private static canMakeCanvas: number = 0
 
 
-            document.getElementById('load-asset-bar')?.addEventListener('change', e => processAction(e));
+    //------------------------ process action
 
-            document.getElementById('make-canvas')?.addEventListener('click', e => processAction(e));
+        public static processAction (e: any): void 
+        {   
 
-            document.getElementById('reset-canvas')?.addEventListener('click', e => processAction(e));
+            e.preventDefault();
+            e.stopPropagation();
 
-            document.getElementById('build-project')?.addEventListener('click', e => processAction(e));
-                            
-            document.getElementById('test-input')?.addEventListener('click', e => processAction(e));
-
-            document.getElementById('add-square')?.addEventListener('click', e => processAction(e));
-
-        //------------------------ process action
-
-            const processAction = (e: any) => {   
-
-                e.preventDefault();
-                e.stopPropagation();
-                
-                switch (e.srcElement.id)
-                {
-                    case 'load-asset-bar': this.loadAsset(e.target.files[0]); break;
-                    case 'add-square': this.addSquare(); break;
-                    case 'make-canvas': this.constructCanvas(); break;
-                    case 'reset-canvas': this.resetCanvas(); break;
-                    case 'build-project': this.buildProject(); break;
-                    case 'test-input': this.runGame(); break;
-                }
+            switch (e.nativeEvent.submitter.id)
+            {
+                case 'load-asset-bar': EventListener.loadAsset(e.target.files[0]); break;
+                case 'add-square': EventListener.addSquare(); break;
+                case 'make-canvas': EventListener.constructCanvas(); break;
+                case 'reset-canvas': EventListener.resetCanvas(); break;
+                case 'build-project': EventListener.buildProject(); break;
+                case 'test-input': EventListener.runGame(); break;
             }
         }
 
+
     //---------------------------- load asset
 
-        private loadAsset(asset: Blob): void
+
+        private static loadAsset(asset: Blob): void
         {
-            this.app.fileReader.readAsDataURL(asset);
-            this.app.preload.process(asset);
+            App.fileReader = new FileReader;
+            App.fileReader.readAsDataURL(asset);
+            App.preload.process(asset);
         }
+
 
     //--------------------------- add square
 
-        private addSquare(): void
+
+        private static addSquare(): void
         {
             const x: any = document.getElementById('sq-pos-x'),
                   y: any = document.getElementById('sq-pos-y'),
                 valX = !x.value ? 0 : x.value,
                 valY = !y.value ? 0 : y.value;
 
-            this.app.scene.create.push(`this.add.graphics({fillStyle: {color: 0xff0000}}).fillRectShape(new Phaser.Geom.Rectangle(${valX}, ${valY}, 50, 50));`);
+            App.scene.create.push(`this.add.graphics({fillStyle: {color: 0xff0000}}).fillRectShape(new Phaser.Geom.Rectangle(${valX}, ${valY}, 50, 50));`);
         }
+
 
     //--------------------- make canvas
 
-        private constructCanvas(): void
+
+        private static constructCanvas(): void
         {
-            if (this.app.game !== null || this.canMakeCanvas === 1)
+            if (App.game !== null || EventListener.canMakeCanvas === 1)
                 return;
 
-            this.canMakeCanvas++;
-            this.canMakeCanvas = 0;
+            EventListener.canMakeCanvas++;
+            EventListener.canMakeCanvas = 0;
 
         // creates canvas
 
@@ -86,42 +74,48 @@
             
                   config = new Config(width.value, height.value);
             
-            this.app.config = config;
+            App.config = config;
         }
+
 
     //------------------------ reset canavs
 
-        private resetCanvas(): void
+
+        private static resetCanvas(): void
         {
-            if (this.app.game === null)
+            if (App.game === null)
                 return;
 
-            this.app.game.destroy(true);
-            this.app.game = null;
-            this.app.config = null;
-            this.app.scene.create = [];
+            App.game.destroy(true);
+            App.game = null;
+            App.config = null;
+            App.scene.create = [];
         }
+
 
     //----------------------------- run game
 
-        private runGame(): void
+
+        private static runGame(): void
         {
-            if (this.app.config !== null && this.app.game === null)
-                this.app.game = new Phaser.Game(this.app.config);
+            if (App.config !== null && App.game === null)
+                App.game = new Phaser.Game(App.config);
         }
 
 
+        
     //--------------------------- build project
 
-        private buildProject(): void
+
+        private static buildProject(): void
         {
-            if (this.app.game === null)
+            if (App.game === null)
                 return;
 
             
             const game = JSON.stringify({
-                config: this.app.config,
-                scene: this.app.scene
+                config: App.config,
+                scene: App.scene
             });
 
             // fetch('/buildProject', app.ajax.request('POST', game))
